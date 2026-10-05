@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="A dictionary and word lookup application using a public dictionary API."
+    >
+
+    <meta
+        name="author"
+        content="Rukhsar Hussain"
+    >
+
+    <title>Dictionary App</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="page">
+
+        <section
+            class="dictionary-container"
+            aria-labelledby="pageTitle"
+        >
+
+            <header class="header">
+
+                <h1 id="pageTitle">
+                    Dictionary
+                </h1>
+
+                <p class="description">
+                    Search for a word and explore its meanings,
+                    pronunciation, and examples.
+                </p>
+
+            </header>
+
+
+            <section class="search-card">
+
+                <form id="searchForm">
+
+                    <label
+                        for="wordInput"
+                        class="sr-only"
+                    >
+                        Enter a word
+                    </label>
+
+                    <div class="search-row">
+
+                        <input
+                            type="search"
+                            id="wordInput"
+                            placeholder="Enter a word..."
+                            autocomplete="off"
+                            required
+                        >
+
+                        <button
+                            type="submit"
+                            class="search-button"
+                            id="searchButton"
+                        >
+                            Search
+                        </button>
+
+                    </div>
+
+                </form>
+
+
+                <p
+                    class="status-message"
+                    id="statusMessage"
+                    aria-live="polite"
+                ></p>
+
+            </section>
+
+
+            <section
+                class="result-section"
+                id="resultSection"
+                hidden
+            >
+
+                <div class="word-header">
+
+                    <div>
+
+                        <p
+                            class="phonetic"
+                            id="phonetic"
+                        ></p>
+
+                        <h2 id="wordTitle">
+                            Word
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="audio-button"
+                        id="audioButton"
+                        hidden
+                        aria-label="Play pronunciation"
+                    >
+                        🔊
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="meanings"
+                    id="meanings"
+                ></div>
+
+            </section>
+
+
+            <section
+                class="welcome-section"
+                id="welcomeSection"
+            >
+
+                <div class="welcome-icon">
+                    📖
+                </div>
+
+                <h2>
+                    Discover new words
+                </h2>
+
+                <p>
+                    Enter a word above to see its definition,
+                    pronunciation, meanings, and usage examples.
+                </p>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

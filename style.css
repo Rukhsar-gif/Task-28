@@ -1,0 +1,507 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d1b2a,
+            #173b5c,
+            #28627a
+        );
+
+    color: #172033;
+}
+
+.page {
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 30px 20px;
+}
+
+.dictionary-container {
+    width: min(950px, 100%);
+
+    background: #f7f9fc;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+    padding: 55px 40px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #112947,
+            #1c5272
+        );
+
+    color: #ffffff;
+}
+
+.task-label {
+    margin-bottom: 15px;
+
+    color: #9fd7fa;
+
+    font-size: 0.75rem;
+
+    font-weight: 700;
+
+    letter-spacing: 2.5px;
+}
+
+.header h1 {
+    margin-bottom: 17px;
+
+    font-size: clamp(2.8rem, 7vw, 5rem);
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+}
+
+.description {
+    max-width: 650px;
+
+    margin: auto;
+
+    color: #c8d9e7;
+
+    font-size: 1rem;
+
+    line-height: 1.7;
+}
+
+.search-card {
+    width: min(760px, 88%);
+
+    margin: 45px auto 25px;
+
+    padding: 25px;
+
+    background: #ffffff;
+
+    border: 1px solid #dfe6ed;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 12px 30px rgba(30, 50, 70, 0.07);
+}
+
+.search-row {
+    display: grid;
+
+    grid-template-columns: 1fr auto;
+
+    gap: 10px;
+}
+
+#wordInput {
+    width: 100%;
+
+    padding: 15px 16px;
+
+    border: 1px solid #cbd7e2;
+
+    border-radius: 7px;
+
+    background: #f8fafc;
+
+    color: #1b3048;
+
+    font-size: 1rem;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#wordInput:focus {
+    border-color: #3275a3;
+
+    box-shadow:
+        0 0 0 3px rgba(50, 117, 163, 0.12);
+}
+
+#wordInput::placeholder {
+    color: #9aa8b5;
+}
+
+.search-button {
+    padding: 14px 24px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #1c5272;
+
+    color: #ffffff;
+
+    font-size: 0.92rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.search-button:hover:not(:disabled) {
+    background: #143e58;
+
+    transform: translateY(-2px);
+}
+
+.search-button:disabled {
+    opacity: 0.55;
+
+    cursor: wait;
+}
+
+.status-message {
+    min-height: 22px;
+
+    margin-top: 11px;
+
+    color: #c0392b;
+
+    font-size: 0.82rem;
+
+    font-weight: 700;
+
+    text-align: center;
+}
+
+.result-section {
+    width: min(760px, 88%);
+
+    margin: 25px auto 40px;
+
+    padding: 32px;
+
+    background: #ffffff;
+
+    border: 1px solid #dfe6ed;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 12px 30px rgba(30, 50, 70, 0.07);
+}
+
+.word-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding-bottom: 22px;
+
+    border-bottom: 1px solid #e5ebef;
+}
+
+.word-header h2 {
+    margin-top: 6px;
+
+    color: #17304e;
+
+    font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.phonetic {
+    color: #3275a3;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 0.9rem;
+
+    font-weight: 700;
+}
+
+.audio-button {
+    width: 45px;
+
+    height: 45px;
+
+    flex-shrink: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #eaf2f7;
+
+    color: #1c5272;
+
+    font-size: 1.1rem;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.audio-button:hover {
+    background: #dceaf1;
+
+    transform: scale(1.05);
+}
+
+.meanings {
+    margin-top: 25px;
+}
+
+.meaning-block {
+    padding: 24px 0;
+
+    border-bottom: 1px solid #edf1f4;
+}
+
+.meaning-block:last-child {
+    border-bottom: none;
+}
+
+.part-of-speech {
+    display: inline-block;
+
+    margin-bottom: 15px;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    background: #eaf2f7;
+
+    color: #2f6688;
+
+    font-size: 0.7rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.7px;
+
+    text-transform: uppercase;
+}
+
+.definition-list {
+    padding-left: 22px;
+}
+
+.definition-item {
+    margin-bottom: 17px;
+
+    color: #536676;
+
+    font-size: 0.92rem;
+
+    line-height: 1.7;
+}
+
+.definition-item:last-child {
+    margin-bottom: 0;
+}
+
+.example {
+    margin-top: 7px;
+
+    padding-left: 12px;
+
+    border-left: 3px solid #b9cfdd;
+
+    color: #768692;
+
+    font-style: italic;
+
+    font-size: 0.83rem;
+}
+
+.welcome-section {
+    width: min(700px, 88%);
+
+    margin: 15px auto 55px;
+
+    padding: 45px 30px;
+
+    text-align: center;
+
+    background: #ffffff;
+
+    border: 1px solid #dfe6ed;
+
+    border-radius: 12px;
+}
+
+.welcome-icon {
+    margin-bottom: 15px;
+
+    font-size: 3rem;
+}
+
+.welcome-section h2 {
+    margin-bottom: 10px;
+
+    color: #173b5c;
+
+    font-size: 1.5rem;
+}
+
+.welcome-section p {
+    max-width: 520px;
+
+    margin: auto;
+
+    color: #6b7b89;
+
+    font-size: 0.9rem;
+
+    line-height: 1.7;
+}
+
+.footer {
+    padding: 25px;
+
+    background: #0c1d30;
+
+    color: #9cafc0;
+
+    text-align: center;
+
+    font-size: 0.78rem;
+}
+
+.footer p + p {
+    margin-top: 5px;
+}
+
+.sr-only {
+    position: absolute;
+
+    width: 1px;
+
+    height: 1px;
+
+    padding: 0;
+
+    margin: -1px;
+
+    overflow: hidden;
+
+    clip: rect(0, 0, 0, 0);
+
+    white-space: nowrap;
+
+    border: 0;
+}
+
+@media (max-width: 700px) {
+
+    .header {
+        padding: 45px 25px;
+    }
+
+    .search-card,
+    .result-section,
+    .welcome-section {
+        width: 92%;
+    }
+
+    .result-section {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .page {
+        padding: 12px;
+    }
+
+    .dictionary-container {
+        border-radius: 12px;
+    }
+
+    .header {
+        padding: 38px 18px;
+    }
+
+    .task-label {
+        font-size: 0.64rem;
+
+        letter-spacing: 1.7px;
+    }
+
+    .header h1 {
+        font-size: 2.5rem;
+    }
+
+    .description {
+        font-size: 0.88rem;
+    }
+
+    .search-card {
+        margin-top: 30px;
+
+        padding: 20px;
+    }
+
+    .search-row {
+        grid-template-columns: 1fr;
+    }
+
+    .search-button {
+        width: 100%;
+    }
+
+    .result-section {
+        padding: 20px;
+    }
+
+    .word-header {
+        align-items: flex-start;
+    }
+
+    .welcome-section {
+        padding: 35px 20px;
+    }
+}
